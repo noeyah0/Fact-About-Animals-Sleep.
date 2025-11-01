@@ -1,0 +1,1219 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&family=Over+the+Rainbow&display=swap");
+
+/* ✨ [수정] 인트로 화면 스타일 (위치 조정) */
+
+#intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #2a1a0a;
+  color: #dfff00;
+  font-family: "Over the Rainbow", Static;
+  text-align: center;
+  z-index: 9999;
+  transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
+
+  /* 이 부모 요소가 자식 요소들의 위치 기준점이 됩니다.
+     (display: flex; 관련 속성은 삭제)
+   */
+  position: relative;
+}
+
+/* ✨ [수정] 모든 자식 요소에 position: absolute; 추가 */
+
+#intro-screen h2 {
+  /* "Click the switch" */
+  position: absolute;
+  top: 2%; /* 위에서 20% 위치 */
+  left: 50%;
+  transform: translateX(-50%); /* 수평 중앙 정렬 */
+  width: 100%;
+  font-size: 96px;
+  font-weight: 400;
+  margin: 0;
+}
+
+#lamp-icon {
+  position: absolute;
+  top: 0%; /* 위에서 35% 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+}
+
+#light-switch {
+  position: absolute;
+  top: 20%; /* 위에서 50% 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%; /* (실제 스위치 크기에 맞게 조절하세요) */
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+#intro-screen h1 {
+  /* "turn on the fire" */
+  position: absolute;
+  top: 65%; /* 위에서 65% 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  font-size: 96px;
+  font-weight: 400;
+  margin: 0;
+}
+
+#intro-screen p {
+  position: absolute;
+  bottom: 10%; /* 아래에서 10% 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* 스위치 클릭 효과 */
+#light-switch:active {
+  transform: scale(0.95) translateX(-50%); /* (기존 transform 유지) */
+}
+
+/* JS가 이 클래스를 추가하면 인트로가 사라짐 */
+#intro-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- (여기부터 기존 myStyle.css 내용) --- */
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fbffed;
+  color: #000;
+}
+
+.container {
+  width: 1420px;
+  margin: 0 auto;
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fbffed;
+  z-index: 1000;
+  padding: 24px 0;
+}
+
+main {
+  padding-top: 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 72px;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+/* title */
+.title {
+  position: relative;
+  height: 800px;
+  background-color: #fbffed;
+  overflow: hidden;
+}
+
+.background-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1420px;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.bg1 {
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  left: 660px;
+  width: 160px;
+}
+
+.bg2 {
+  position: absolute;
+  z-index: 5;
+  top: 220px;
+  left: 630px;
+  width: 220px;
+}
+
+.bg3 {
+  position: absolute;
+  top: 160px;
+  left: 440px;
+  width: 600px;
+}
+
+/* title-text */
+.title-text {
+  position: absolute;
+  z-index: 10;
+  top: 520px;
+  left: 500px;
+  font-family: "Noto Sans", sans-serif;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.title-text h1 {
+  font-size: 100px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* intro */
+.intro {
+  position: relative;
+  height: 400px;
+  background-color: #fbffed;
+  overflow: hidden;
+}
+
+.intro-text {
+  position: absolute;
+  z-index: 10;
+  top: 200px;
+  left: 140px;
+  font-family: "Noto Sans", sans-serif;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.intro-text h2 {
+  top: 200px;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 100px 0 32px;
+  line-height: 1.4;
+}
+
+/* animalsImg */
+.animals {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(#fbffed, #0087c6);
+  padding: 200px 0;
+  overflow: hidden;
+}
+
+/* 상세 섹션 공통 스타일 */
+.animal.whale,
+.animal.giraffe,
+.animal.elephant,
+.animal.horse,
+.animal.ant,
+.animal.human,
+.animal.chimpanzee,
+.animal.sloth,
+.animal.seaOtter,
+.animal.duck,
+.animal.lion,
+.animal.cat,
+.animal.dog,
+.animal.rat,
+.animal.walrus,
+.animal.bat,
+.animal.koala {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 1420px;
+  margin: -217px auto;
+  min-height: 700px;
+  padding: 50px 0;
+}
+
+/* 상세 섹션 - 텍스트 영역 공통 (Column 1) */
+.whale-text,
+.giraffe-text,
+.elephant-text,
+.horse-text,
+.ant-text,
+.human-text,
+.chimpanzee-text,
+.sloth-text,
+.seaOtter-text,
+.duck-text,
+.lion-text,
+.cat-text,
+.dog-text,
+.rat-text,
+.walrus-text,
+.bat-text,
+.koala-text {
+  flex: 1;
+  max-width: 450px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  padding-right: 20px;
+}
+
+/* 상세 섹션 - 이미지 영역 공통 (Column 2와 3을 감싸는 영역) */
+.whale-image-area,
+.giraffe-image-area,
+.elephant-image-area,
+.horse-image-area,
+.ant-image-area,
+.human-image-area,
+.chimpanzee-image-area,
+.sloth-image-area,
+.seaOtter-image-area,
+.duck-image-area,
+.lion-image-area,
+.cat-image-area,
+.dog-image-area,
+.rat-image-area,
+.walrus-image-area,
+.bat-image-area,
+.koala-image-area {
+  flex: 2;
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+/* 텍스트 포맷 공통 */
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 30px;
+}
+p1 {
+  font-size: 100px;
+  font-weight: 800;
+  margin: 4px 0;
+}
+p2 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.7;
+}
+
+/* --- 범고래 (Whale) --- */
+.whale-static {
+  width: 320px;
+  opacity: 1;
+  left: 60%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.whale-gif {
+  width: 800px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 70%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.whale-sleep {
+  width: 500px;
+  opacity: 0;
+  left: 75%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.whale-text p1 {
+  color: #0087c6;
+}
+.whale.active .whale-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.whale.active .whale-gif {
+  display: block;
+  opacity: 1;
+}
+.whale.active .whale-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 기린 (Giraffe) --- */
+.giraffe-static {
+  width: 400px;
+  opacity: 1;
+  left: 30%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.giraffe-gif {
+  width: 700px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.giraffe-sleep {
+  width: 450px;
+  opacity: 0;
+  left: 75%;
+  top: 53%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.giraffe-text p1 {
+  color: #0087c6;
+}
+.giraffe.active .giraffe-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.giraffe.active .giraffe-gif {
+  display: block;
+  opacity: 1;
+}
+.giraffe.active .giraffe-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 코끼리 (Elephant) --- */
+.elephant-static {
+  width: 450px;
+  opacity: 1;
+  left: 25%;
+  top: 53%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.elephant-gif {
+  width: 800px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 41%;
+  top: 53%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.elephant-sleep {
+  width: 450px;
+  opacity: 0;
+  left: 75%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.elephant-text p1 {
+  color: #0087c6;
+}
+.elephant.active .elephant-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.elephant.active .elephant-gif {
+  display: block;
+  opacity: 1;
+}
+.elephant.active .elephant-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 말 (Horse) --- */
+.horse-static {
+  width: 350px;
+  opacity: 1;
+  left: 20%;
+  top: 53%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.horse-gif {
+  width: 700px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 52%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.horse-sleep {
+  width: 500px;
+  opacity: 0;
+  left: 75%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.horse-text p1 {
+  color: #0087c6;
+}
+.horse.active .horse-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.horse.active .horse-gif {
+  display: block;
+  opacity: 1;
+}
+.horse.active .horse-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 개미 (Ant) --- */
+.ant-static {
+  width: 400px;
+  opacity: 1;
+  left: 20%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.ant-gif {
+  width: 650px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 45%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.ant-sleep {
+  width: 400px;
+  opacity: 0;
+  left: 80%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.ant-text p1 {
+  color: #0087c6;
+}
+.ant.active .ant-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.ant.active .ant-gif {
+  display: block;
+  opacity: 1;
+}
+.ant.active .ant-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 인간 (Human) --- */
+.human-static {
+  width: 320px;
+  opacity: 1;
+  left: 8%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.human-gif {
+  width: 65px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 36%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.human-sleep {
+  width: 700px;
+  opacity: 0;
+  left: 70%;
+  top: 60%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.human-text p1 {
+  color: #0087c6;
+}
+.human.active .human-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.human.active .human-gif {
+  display: block;
+  opacity: 1;
+}
+.human.active .human-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 침팬지 (Chimpanzee) --- */
+.chimpanzee-static {
+  width: 270px;
+  opacity: 1;
+  left: 18%;
+  top: 56%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.chimpanzee-gif {
+  width: 600px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 52%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.chimpanzee-sleep {
+  width: 450px;
+  opacity: 0;
+  left: 80%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.chimpanzee-text p1 {
+  color: #0087c6;
+}
+.chimpanzee.active .chimpanzee-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.chimpanzee.active .chimpanzee-gif {
+  display: block;
+  opacity: 1;
+}
+.chimpanzee.active .chimpanzee-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 나무늘보 (Sloth) --- */
+.sloth-static {
+  width: 400px;
+  opacity: 1;
+  left: 15%;
+  top: 53%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.sloth-gif {
+  width: 750px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 52%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.sloth-sleep {
+  width: 400px;
+  opacity: 0;
+  left: 80%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.sloth-text p1 {
+  color: #0087c6;
+}
+.sloth.active .sloth-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.sloth.active .sloth-gif {
+  display: block;
+  opacity: 1;
+}
+.sloth.active .sloth-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 해달 (SeaOtter) --- */
+.seaOtter-static {
+  width: 350px;
+  opacity: 1;
+  left: 10%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.seaOtter-gif {
+  width: 600px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 40%;
+  top: 45%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.seaOtter-sleep {
+  width: 300px;
+  opacity: 0;
+  left: 80%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.seaOtter-text p1 {
+  color: #ccff02;
+}
+.seaOtter.active .seaOtter-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.seaOtter.active .seaOtter-gif {
+  display: block;
+  opacity: 1;
+}
+.seaOtter.active .seaOtter-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 오리 (Duck) --- */
+.duck-static {
+  width: 200px;
+  opacity: 1;
+  left: 33%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.duck-gif {
+  width: 450px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 60%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.duck-sleep {
+  width: 430px;
+  opacity: 0;
+  left: 80%;
+  top: 57%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.duck-text p1 {
+  color: #ccff02;
+}
+.duck.active .duck-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.duck.active .duck-gif {
+  display: block;
+  opacity: 1;
+}
+.duck.active .duck-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 사자 (Lion) --- */
+.lion-static {
+  width: 330px;
+  opacity: 1;
+  left: 30%;
+  top: 45%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.lion-gif {
+  width: 600px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 60%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.lion-sleep {
+  width: 450px;
+  opacity: 0;
+  left: 80%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.lion-text p1 {
+  color: #ccff02;
+}
+.lion.active .lion-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.lion.active .lion-gif {
+  display: block;
+  opacity: 1;
+}
+.lion.active .lion-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 고양이 (Cat) --- */
+.cat-static {
+  width: 250px;
+  opacity: 1;
+  left: 26%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.cat-gif {
+  width: 200px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 45%;
+  top: 52%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.cat-sleep {
+  width: 400px;
+  opacity: 0;
+  left: 80%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.cat-text p1 {
+  color: #ccff02;
+}
+.cat.active .cat-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.cat.active .cat-gif {
+  display: block;
+  opacity: 1;
+}
+.cat.active .cat-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 개 (Dog) --- */
+.dog-static {
+  width: 300px;
+  opacity: 1;
+  left: 30%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.dog-gif {
+  width: 530px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 45%;
+  top: 57%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.dog-sleep {
+  width: 300px;
+  opacity: 0;
+  left: 80%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.dog-text p1 {
+  color: #ccff02;
+}
+.dog.active .dog-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.dog.active .dog-gif {
+  display: block;
+  opacity: 1;
+}
+.dog.active .dog-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 주머니쥐 (Rat) --- */
+.rat-static {
+  width: 310px;
+  opacity: 1;
+  left: 15%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.rat-gif {
+  width: 700px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 46%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.rat-sleep {
+  width: 400px;
+  opacity: 0;
+  left: 80%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.rat-text p1 {
+  color: #ccff02;
+}
+.rat.active .rat-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.rat.active .rat-gif {
+  display: block;
+  opacity: 1;
+}
+.rat.active .rat-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 바다코끼리 (Walrus) --- */
+.walrus-static {
+  width: 290px;
+  opacity: 1;
+  left: 18%;
+  top: 60%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.walrus-gif {
+  width: 800px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 36%;
+  top: 60%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.walrus-sleep {
+  width: 650px;
+  opacity: 0;
+  left: 70%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.walrus-text p1 {
+  color: #ccff02;
+}
+.walrus.active .walrus-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.walrus.active .walrus-gif {
+  display: block;
+  opacity: 1;
+}
+.walrus.active .walrus-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 박쥐 (Bat) --- */
+.bat-static {
+  width: 400px;
+  opacity: 1;
+  left: 10%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.bat-gif {
+  width: 700px;
+  display: none;
+  z-index: 10;
+  left: 30%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.bat-sleep {
+  width: 500px;
+  opacity: 0;
+  left: 85%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.bat-text p1 {
+  color: #ccff02;
+}
+.bat.active .bat-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.bat.active .bat-gif {
+  display: block;
+  opacity: 1;
+}
+.bat.active .bat-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 코알라 (Koala) --- */
+.koala-static {
+  width: 390px;
+  opacity: 1;
+  left: 0%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.koala-gif {
+  width: 700px;
+  opacity: 0;
+  display: none;
+  z-index: 10;
+  left: 30%;
+  top: 67%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.koala-sleep {
+  width: 380px;
+  opacity: 0;
+  left: 85%;
+  top: 55%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, left 0.5s ease;
+}
+.koala-text p1 {
+  color: #ccff02;
+}
+.koala.active .koala-static {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.koala.active .koala-gif {
+  display: block;
+  opacity: 1;
+}
+.koala.active .koala-sleep {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 전구 이미지 */
+
+#to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1001;
+  cursor: pointer;
+  width: auto;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.light-bulb {
+  width: 80px;
+  height: auto;
+  transition: opacity 0.3s;
+}
+
+#to-top:hover .light-bulb {
+  opacity: 0.8;
+}
+
+/* === 6. Footer === */
+footer {
+  background-color: #eef0e5;
+  padding: 48px 0;
+
+  font-size: 14px;
+  color: #131313;
+  border-top: 1px solid #ebebeb;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* 푸터 항목별 너비 조정 */
+.contact-info,
+.copyright,
+.class-info {
+  width: 30%;
+}
+
+.contact-info {
+  order: 1;
+}
+
+.copyright {
+  order: 2;
+  text-align: center;
+  font-weight: 700;
+}
+
+.class-info {
+  order: 3;
+  text-align: right;
+}
